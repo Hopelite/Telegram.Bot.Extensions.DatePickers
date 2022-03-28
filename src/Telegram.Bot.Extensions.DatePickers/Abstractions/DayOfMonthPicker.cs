@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Telegram.Bot.Extensions.DatePickers.Abstractions
 {
+    /// <summary>
+    /// Abstract factory for creating day of month date pickers.
+    /// </summary>
+    /// <typeparam name="T">Type of elements in date picker widget.</typeparam>
     public abstract class DayOfMonthPicker<T>
     {
         public const int DaysInWeek = 7;
@@ -85,8 +90,17 @@ namespace Telegram.Bot.Extensions.DatePickers.Abstractions
             return datePicker;
         }
 
+        /// <summary>
+        /// Factory method used to create buttons of day of month picker.
+        /// </summary>
+        /// <param name="date"><see cref="DateTime"/> to create button with.</param>
+        /// <returns><typeparamref name="T"/> button.</returns>
         protected abstract T CreateButton(DateTime date);
 
+        /// <summary>
+        /// Factory method used to create empty buttons of day of month picker.
+        /// </summary>
+        /// <returns>Empty <typeparamref name="T"/> button.</returns>
         protected abstract T CreateEmptyButton();
     }
 }
