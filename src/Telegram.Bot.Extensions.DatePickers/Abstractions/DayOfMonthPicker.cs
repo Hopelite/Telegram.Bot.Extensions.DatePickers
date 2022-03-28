@@ -50,7 +50,9 @@ namespace Telegram.Bot.Extensions.DatePickers.Abstractions
             var numberOfDays = DateTime.DaysInMonth(this.Date.Year, this.Date.Month);
             var firstDayOfWeek = new DateTime(this.Date.Year, this.Date.Month, 1).DayOfWeek;
 
-            var firstWeekDaysLeft = DaysInWeek - (int)firstDayOfWeek;
+            // 
+            var firstWeekDaysLeft = firstDayOfWeek - this.WeekBeginsWith;
+
 
             // Calculating number of weeks
             var daysInTotal = numberOfDays + (int)firstDayOfWeek;
@@ -59,14 +61,14 @@ namespace Telegram.Bot.Extensions.DatePickers.Abstractions
 
             // Fill empty days
             datePicker[0] = new T[DaysInWeek];
-            for (int i = 0; i < (int)firstDayOfWeek; i++)
+            for (int i = 0; i < firstWeekDaysLeft; i++)
             {
                 datePicker[0][i] = this.CreateEmptyButton();
             }
 
             // Fill first week days
             var day = 1;
-            for (int i = (int)firstDayOfWeek; i < DaysInWeek; i++, day++)
+            for (int i = firstWeekDaysLeft; i < DaysInWeek; i++, day++)
             {
                 datePicker[0][i] = this.CreateButton(new DateTime(this.Date.Year, this.Date.Month, day));
             }
@@ -82,8 +84,7 @@ namespace Telegram.Bot.Extensions.DatePickers.Abstractions
             }
 
             // Fill empty days in the end
-            var emptyDaysLeft = numberOfWeeks * DaysInWeek - numberOfDays - (int)firstDayOfWeek;
-
+            var emptyDaysLeft = numberOfWeeks * DaysInWeek - numberOfDays - (int)firstDayOfWeek + (int)this.WeekBeginsWith;
             for (int i = DaysInWeek - 1; i >= DaysInWeek - emptyDaysLeft; i--)
             {
                 datePicker[^1][i] = CreateEmptyButton();
