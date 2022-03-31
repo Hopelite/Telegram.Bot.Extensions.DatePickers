@@ -49,26 +49,28 @@ namespace Telegram.Bot.Extensions.DatePickers.Abstractions
         {
             var numberOfDays = DateTime.DaysInMonth(this.Date.Year, this.Date.Month);
             var firstDayOfWeek = new DateTime(this.Date.Year, this.Date.Month, 1).DayOfWeek;
-
-            // 
-            var firstWeekDaysLeft = firstDayOfWeek - this.WeekBeginsWith;
-
+            
+            var firstWeekEmptyDays = firstDayOfWeek - this.WeekBeginsWith;
+            if (firstWeekEmptyDays < 0)
+            {
+                firstWeekEmptyDays = DaysInWeek + firstWeekEmptyDays;
+            }
 
             // Calculating number of weeks
-            var daysInTotal = numberOfDays + (int)firstDayOfWeek;
+            var daysInTotal = numberOfDays + firstWeekEmptyDays;
             var numberOfWeeks = daysInTotal / DaysInWeek + (daysInTotal % DaysInWeek == 0 ? 0 : 1);
             var datePicker = new T[numberOfWeeks][];
 
             // Fill empty days
             datePicker[0] = new T[DaysInWeek];
-            for (int i = 0; i < firstWeekDaysLeft; i++)
+            for (int i = 0; i < firstWeekEmptyDays; i++)
             {
                 datePicker[0][i] = this.CreateEmptyButton();
             }
 
             // Fill first week days
             var day = 1;
-            for (int i = firstWeekDaysLeft; i < DaysInWeek; i++, day++)
+            for (int i = firstWeekEmptyDays; i < DaysInWeek; i++, day++)
             {
                 datePicker[0][i] = this.CreateButton(new DateTime(this.Date.Year, this.Date.Month, day));
             }
@@ -84,7 +86,7 @@ namespace Telegram.Bot.Extensions.DatePickers.Abstractions
             }
 
             // Fill empty days in the end
-            var emptyDaysLeft = numberOfWeeks * DaysInWeek - numberOfDays - (int)firstDayOfWeek + (int)this.WeekBeginsWith;
+            var emptyDaysLeft = numberOfWeeks * DaysInWeek - daysInTotal;
             for (int i = DaysInWeek - 1; i >= DaysInWeek - emptyDaysLeft; i--)
             {
                 datePicker[^1][i] = CreateEmptyButton();

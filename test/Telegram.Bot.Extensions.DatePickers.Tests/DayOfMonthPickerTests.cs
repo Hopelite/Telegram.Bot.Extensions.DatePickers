@@ -9,6 +9,7 @@ namespace Telegram.Bot.Extensions.DatePickers.Tests
         [Theory]
         [MemberData(nameof(DayOfMonthPickerTestData.ExpectedFirstDayMonday), MemberType = typeof(DayOfMonthPickerTestData))]
         [MemberData(nameof(DayOfMonthPickerTestData.ExpectedFirstDaySunday), MemberType = typeof(DayOfMonthPickerTestData))]
+        [MemberData(nameof(DayOfMonthPickerTestData.ExpectedFirstDaySaturday), MemberType = typeof(DayOfMonthPickerTestData))]
         public void DayOfMonthPickerTests_CreateDayOfMonthPicker_ReturnsExpectedDatePicker(DateTime date, DayOfWeek weeksStarts, int[][] expected)
         {
             // Arrange
