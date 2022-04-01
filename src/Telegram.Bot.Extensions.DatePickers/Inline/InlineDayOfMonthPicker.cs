@@ -9,14 +9,14 @@ namespace Telegram.Bot.Extensions.DatePickers.Inline
     /// </summary>
     public class InlineDayOfMonthPicker : DayOfMonthPicker<InlineKeyboardButton>
     {
-        private readonly IInlineButtonFactory _inlineButtonFactory;
+        private readonly IButtonFactory<InlineKeyboardButton> _inlineButtonFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineDayOfMonthPicker"/> with the first day of week set to Monday.
         /// </summary>
         /// <param name="date"><see cref="DateTime"/> with date which days to use.</param>
-        /// <param name="buttonFactory"><see cref="IInlineButtonFactory"/> to create buttons with.</param>
-        public InlineDayOfMonthPicker(DateTime date, IInlineButtonFactory buttonFactory)
+        /// <param name="buttonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
+        public InlineDayOfMonthPicker(DateTime date, IButtonFactory<InlineKeyboardButton> buttonFactory)
             : this(date, DayOfWeek.Monday, buttonFactory)
         {
         }
@@ -26,9 +26,9 @@ namespace Telegram.Bot.Extensions.DatePickers.Inline
         /// </summary>
         /// <param name="date"><see cref="DateTime"/> with date which days to use.</param>
         /// <param name="weekBeginsWith"><see cref="DayOfWeek"/> from which week begins.</param>
-        /// <param name="buttonFactory"><see cref="IInlineButtonFactory"/> to create buttons with.</param>
+        /// <param name="buttonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="buttonFactory"/> is null.</exception>
-        public InlineDayOfMonthPicker(DateTime date, DayOfWeek weekBeginsWith, IInlineButtonFactory buttonFactory)
+        public InlineDayOfMonthPicker(DateTime date, DayOfWeek weekBeginsWith, IButtonFactory<InlineKeyboardButton> buttonFactory)
             : base(date, weekBeginsWith)
         {
             this._inlineButtonFactory = buttonFactory ?? throw new ArgumentNullException(nameof(buttonFactory));
