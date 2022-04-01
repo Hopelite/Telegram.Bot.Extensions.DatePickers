@@ -15,8 +15,8 @@ namespace Telegram.Bot.Extensions.DatePickers.Keyboard
         /// Initializes a new instance of the <see cref="KeyboardDayOfMonthPicker"/> with the first day of week set to Monday.
         /// </summary>
         /// <param name="date"><see cref="DateTime"/> with date which days to use.</param>
-        /// <param name="keyboardButtonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
-        public KeyboardDayOfMonthPicker(DateTime date, IButtonFactory<KeyboardButton> keyboardButtonFactory)
+        /// <param name="keyboardButtonFactory">Optional. <see cref="IButtonFactory{T}"/> to create buttons with. If null, will use <see cref="DefaultDayKeyboardButtonFactory"/> instead.</param>
+        public KeyboardDayOfMonthPicker(DateTime date, IButtonFactory<KeyboardButton>? keyboardButtonFactory = null)
             : this(date, DayOfWeek.Monday, keyboardButtonFactory)
         {
         }
@@ -26,12 +26,11 @@ namespace Telegram.Bot.Extensions.DatePickers.Keyboard
         /// </summary>
         /// <param name="date"><see cref="DateTime"/> with date which days to use.</param>
         /// <param name="weekBeginsWith"><see cref="DayOfWeek"/> from which week begins.</param>
-        /// <param name="keyboardButtonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="keyboardButtonFactory"/> is null.</exception>
-        public KeyboardDayOfMonthPicker(DateTime date, DayOfWeek weekBeginsWith, IButtonFactory<KeyboardButton> keyboardButtonFactory)
+        /// <param name="keyboardButtonFactory">Optional. <see cref="IButtonFactory{T}"/> to create buttons with. If null, will use <see cref="DefaultDayKeyboardButtonFactory"/> instead.</param>
+        public KeyboardDayOfMonthPicker(DateTime date, DayOfWeek weekBeginsWith, IButtonFactory<KeyboardButton>? keyboardButtonFactory = null)
             : base(date, weekBeginsWith)
         {
-            _keyboardButtonFactory = keyboardButtonFactory ?? throw new ArgumentNullException(nameof(keyboardButtonFactory));
+            _keyboardButtonFactory = keyboardButtonFactory ?? new DefaultDayKeyboardButtonFactory();
         }
 
         /// <inheritdoc/>
