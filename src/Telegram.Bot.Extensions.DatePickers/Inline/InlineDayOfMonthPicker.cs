@@ -15,9 +15,10 @@ namespace Telegram.Bot.Extensions.DatePickers.Inline
         /// Initializes a new instance of the <see cref="InlineDayOfMonthPicker"/> with the first day of week set to Monday.
         /// </summary>
         /// <param name="date"><see cref="DateTime"/> with date which days to use.</param>
-        /// <param name="buttonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
-        public InlineDayOfMonthPicker(DateTime date, IButtonFactory<InlineKeyboardButton> buttonFactory)
-            : this(date, DayOfWeek.Monday, buttonFactory)
+        /// <param name="inlineButtonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="inlineButtonFactory"/> is null.</exception>
+        public InlineDayOfMonthPicker(DateTime date, IButtonFactory<InlineKeyboardButton> inlineButtonFactory)
+            : this(date, DayOfWeek.Monday, inlineButtonFactory)
         {
         }
 
@@ -26,12 +27,12 @@ namespace Telegram.Bot.Extensions.DatePickers.Inline
         /// </summary>
         /// <param name="date"><see cref="DateTime"/> with date which days to use.</param>
         /// <param name="weekBeginsWith"><see cref="DayOfWeek"/> from which week begins.</param>
-        /// <param name="buttonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="buttonFactory"/> is null.</exception>
-        public InlineDayOfMonthPicker(DateTime date, DayOfWeek weekBeginsWith, IButtonFactory<InlineKeyboardButton> buttonFactory)
+        /// <param name="inlineButtonFactory"><see cref="IButtonFactory{T}"/> to create buttons with.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="inlineButtonFactory"/> is null.</exception>
+        public InlineDayOfMonthPicker(DateTime date, DayOfWeek weekBeginsWith, IButtonFactory<InlineKeyboardButton> inlineButtonFactory)
             : base(date, weekBeginsWith)
         {
-            this._inlineButtonFactory = buttonFactory ?? throw new ArgumentNullException(nameof(buttonFactory));
+            this._inlineButtonFactory = inlineButtonFactory ?? throw new ArgumentNullException(nameof(inlineButtonFactory));
         }
 
         /// <inheritdoc/>
