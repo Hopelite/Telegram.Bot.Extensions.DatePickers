@@ -6,7 +6,7 @@ Contains implementations of datepickers for Telegram bots.
 
 You can use `InlineDayOfMonthPicker` to create datepicker as Inline Keyboard:
 
-[InlineDayOfMonthPicker with FirstDayOfWeek set to Monday](https://user-images.githubusercontent.com/74190492/161345169-8e0bfc7f-0289-475c-a888-eb9450d3d220.png)
+![InlineDayOfMonthPicker with FirstDayOfWeek set to Monday](https://user-images.githubusercontent.com/74190492/161345169-8e0bfc7f-0289-475c-a888-eb9450d3d220.png)
 
 Example of usage:
 ```
@@ -41,4 +41,4 @@ var datePicker =  new InlineDayOfMonthPicker(DateTime.Now, DayOfWeek.Sunday, new
 
 Result:
 
-[InlineDayOfMonthPicker with FirstDayOfWeek set to Sunday](https://user-images.githubusercontent.com/74190492/161345194-296e2702-22aa-4619-8d3f-5ae9276e7866.png)
+![InlineDayOfMonthPicker with FirstDayOfWeek set to Sunday](https://user-images.githubusercontent.com/74190492/161345194-296e2702-22aa-4619-8d3f-5ae9276e7866.png)
