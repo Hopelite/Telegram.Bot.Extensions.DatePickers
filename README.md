@@ -42,3 +42,7 @@ var datePicker =  new InlineDayOfMonthPicker(DateTime.Now, DayOfWeek.Sunday, new
 Result:
 
 ![InlineDayOfMonthPicker with FirstDayOfWeek set to Sunday](https://user-images.githubusercontent.com/74190492/161345194-296e2702-22aa-4619-8d3f-5ae9276e7866.png)
+
+The same can be done with Keyboard Buttons using `KeyboardDayOfMonthPicker`:
+
+![KeyboardDayOfMonthPicker with FirstDayOfWeek set to Monday](https://user-images.githubusercontent.com/74190492/161345181-cb310f43-fd3f-4334-a1d2-534b171f76d0.png)
