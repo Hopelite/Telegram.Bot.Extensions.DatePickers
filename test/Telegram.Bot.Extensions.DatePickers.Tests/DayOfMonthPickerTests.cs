@@ -1,6 +1,6 @@
 ﻿using System;
-using Xunit;
 using Telegram.Bot.Extensions.DatePickers.Tests.TestTypes;
+using Xunit;
 
 namespace Telegram.Bot.Extensions.DatePickers.Tests
 {

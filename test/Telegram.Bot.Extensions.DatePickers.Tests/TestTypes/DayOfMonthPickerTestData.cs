@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Telegram.Bot.Extensions.DatePickers.Tests.TestTypes
 {
     /// <summary>
-    /// Contains test data for <see cref="DayOfMonthPickerTests"/>.
+    /// Contains test data for the <see cref="DayOfMonthPickerTests"/>.
     /// </summary>
     public static class DayOfMonthPickerTestData
     {
@@ -120,7 +120,7 @@ namespace Telegram.Bot.Extensions.DatePickers.Tests.TestTypes
         }
 
         /// <summary>
-        /// Gets test data with first day of week set to Sunday.
+        /// Gets test data with the first day of week set to Sunday.
         /// </summary>
         public static IEnumerable<object[]> ExpectedFirstDaySunday
         {
@@ -230,7 +230,7 @@ namespace Telegram.Bot.Extensions.DatePickers.Tests.TestTypes
         }
 
         /// <summary>
-        /// Gets test data with first day of week set to Saturday.
+        /// Gets test data with the first day of week set to Saturday.
         /// </summary>
         public static IEnumerable<object[]> ExpectedFirstDaySaturday
         {

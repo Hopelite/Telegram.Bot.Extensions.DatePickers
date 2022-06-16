@@ -4,7 +4,7 @@ using Telegram.Bot.Extensions.DatePickers.Abstractions;
 namespace Telegram.Bot.Extensions.DatePickers.Tests.TestTypes
 {
     /// <summary>
-    /// Test class for <see cref="DayOfMonthPicker{T}"/>.
+    /// Test class for the <see cref="DayOfMonthPicker{T}"/> tests.
     /// </summary>
     internal class TestDayOfMonthPicker : DayOfMonthPicker<int>
     {

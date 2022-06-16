@@ -5,20 +5,20 @@ namespace Telegram.Bot.Extensions.DatePickers.Abstractions
     /// <summary>
     /// Defines methods for date picking buttons factories.
     /// </summary>
-    /// <typeparam name="T">Type of buttons.</typeparam>
+    /// <typeparam name="T">The type of buttons.</typeparam>
     public interface IButtonFactory<out T>
     {
         /// <summary>
-        /// Creates <typeparamref name="T"/> button of day of month picker.
+        /// Creates a <typeparamref name="T"/> button of the day of month picker.
         /// </summary>
-        /// <param name="date"><see cref="DateTime"/> to create button with.</param>
-        /// <returns>Date picker button.</returns>
+        /// <param name="date">The <see cref="DateTime"/> to create button with.</param>
+        /// <returns>A date picker button.</returns>
         public T CreateButton(DateTime date);
 
         /// <summary>
-        /// Creates empty <typeparamref name="T"/> button of day of month picker.
+        /// Creates an empty <typeparamref name="T"/> button of the day of month picker.
         /// </summary>
-        /// <returns>Empty date picker button.</returns>
+        /// <returns>An empty date picker button.</returns>
         public T CreateEmptyButton();
     }
 }

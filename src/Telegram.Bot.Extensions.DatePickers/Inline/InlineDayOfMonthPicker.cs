@@ -32,19 +32,19 @@ namespace Telegram.Bot.Extensions.DatePickers.Inline
         public InlineDayOfMonthPicker(DateTime date, DayOfWeek weekBeginsWith, IButtonFactory<InlineKeyboardButton> inlineButtonFactory)
             : base(date, weekBeginsWith)
         {
-            this._inlineButtonFactory = inlineButtonFactory ?? throw new ArgumentNullException(nameof(inlineButtonFactory));
+            _inlineButtonFactory = inlineButtonFactory ?? throw new ArgumentNullException(nameof(inlineButtonFactory));
         }
 
         /// <inheritdoc/>
         protected override InlineKeyboardButton CreateButton(DateTime date)
         {
-            return this._inlineButtonFactory.CreateButton(date);
+            return _inlineButtonFactory.CreateButton(date);
         }
 
         /// <inheritdoc/>
         protected override InlineKeyboardButton CreateEmptyButton()
         {
-            return this._inlineButtonFactory.CreateEmptyButton();
+            return _inlineButtonFactory.CreateEmptyButton();
         }
     }
 }
