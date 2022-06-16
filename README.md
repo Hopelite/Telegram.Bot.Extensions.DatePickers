@@ -14,7 +14,7 @@ var datePicker =  new InlineDayOfMonthPicker(DateTime.Now, new InlineButtonFacto
 
 await botClient.SendTextMessageAsync(
     chatId: chatId,
-    text: "This is a datepicker with first day of week set to Monday 📅",
+    text: "This is a datepicker with the first day of week set to Monday 📅",
     replyMarkup: new ReplyKeyboardMarkup(datePicker.CreateDayOfMonthPicker()));
 
 ...
@@ -33,7 +33,7 @@ class InlineButtonFactory : IButtonFactory<InlineKeyboardButton>
 }
 ```
 
-You can set the first day of week to adapt datepicker for end user:
+You can set the first day of week to adapt the datepicker for the end user:
 
 ```
 var datePicker =  new InlineDayOfMonthPicker(DateTime.Now, DayOfWeek.Sunday, new InlineButtonFactory());
